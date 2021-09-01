@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gs-config
+  namespace: gis
+  labels:
+    app: gs
+data:
+  STABLE_EXTENSIONS: "app-schema-plugin,authkey-plugin,cas-plugin,charts-plugin,css-plugin,db2-plugin,dxf-plugin,excel-plugin,feature-pregeneralized-plugin,geofence-plugin,geofence-server-plugin,grib-plugin,gwc-s3-plugin,h2-plugin,imagemap-plugin,importer-plugin,jp2k-plugin,mapml-plugin,mbstyle-plugin,mongodb-plugin,mysql-plugin,netcdf-out-plugin,netcdf-plugin,ogr-wfs-plugin,ogr-wps-plugin,oracle-plugin,params-extractor-plugin,querylayer-plugin,sldservice-plugin,sqlserver-plugin,teradata-plugin,wcs2_0-eo-plugin,web-resource-plugin,wmts-multi-dimensional-plugin,wps-cluster-hazelcast-plugin,wps-download-plugin,wps-jdbc-plugin,xslt-plugin,ysld-plugin"
+  COMMUNITY_EXTENSIONS: "activeMQ-broker-plugin,backup-restore-plugin,cog-plugin,colormap-plugin,cov-json-plugin,csw-iso-plugin,dds-plugin,dyndimension-plugin,elasticsearch-plugin,features-templating-plugin,flatgeobuf-plugin,gdal-wcs-plugin,gdal-wps-plugin,geopkg-plugin,geostyler-plugin,gpx-plugin,gsr-plugin,gwc-azure-blobstore-plugin,gwc-distributed-plugin,gwc-sqlite-plugin,hz-cluster-plugin,imagemosaic-jdbc-plugin,importer-jdbc-plugin,jdbc-metrics-plugin,jdbcconfig-plugin,jdbcstore-plugin,jms-cluster-plugin,kmlppio-plugin,mbtiles-plugin,mbtiles-store-plugin,metadata-plugin,ncwms-plugin,netcdf-ghrsst-plugin,notification-plugin,nsg-wfs-profile-plugin,nsg-wmts-profile-plugin,ogcapi-plugin,ogr-datastore-plugin,opensearch-eo-plugin,ows-simulate-plugin,pgraster-plugin,qos-plugin,s3-geotiff-plugin,saml-plugin,sec-keycloak-plugin,sec-oauth2-geonode-plugin,sec-oauth2-github-plugin,sec-oauth2-google-plugin,sec-oauth2-openid-connect-plugin,smart-data-loader-plugin,solr-plugin,taskmanager-core-plugin,taskmanager-s3-plugin,wfs3-plugin,wms-eo-plugin,wmts-styles-plugin,wps-remote-plugin"
+  DB_BACKEND: POSTGRES 
+  HOST: postgres 
+  POSTGRES_PORT: "5432" 
+  POSTGRES_DB: gis 
+  POSTGRES_USER: admin 
+  POSTGRES_PASS: admin
+  SSL: "false"
+  HTTP_PORT: "8080"
+  ALLOW_IP_RANGE: 0.0.0.0/0 

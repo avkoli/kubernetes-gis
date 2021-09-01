@@ -1,0 +1,40 @@
+{
+	"configurations": [
+		{
+			"command": "npm start",
+			"name": "Run npm start",
+			"request": "launch",
+			"type": "node-terminal"
+		},
+		{
+			"type": "firefox",
+			"request": "attach",
+			"name": "Attach Firefox",
+			"url": "http://localhost:9228",
+			"webRoot": "${workspaceFolder}"
+		},
+		{
+			"name": "Launch Chrome",
+			"request": "launch",
+			"type": "pwa-chrome",
+			"url": "http://localhost:9228",
+			"webRoot": "${workspaceFolder}"
+		},
+		{
+			"type": "pwa-chrome",
+			"name": "http://localhost:9228",
+			"request": "launch",
+			"url": "http://localhost:9228"
+		},
+		{
+			"name": "WSL Chrome",
+			"type": "chrome",
+			"request": "launch",
+			"url": "http://localhost:9228",
+			"webRoot": "${workspaceFolder}/src",
+			"sourceMapPathOverrides": {
+			  "/*": "/__vscode-remote-uri__/*"
+			}
+		  }
+	]
+}

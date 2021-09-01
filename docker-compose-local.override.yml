@@ -1,0 +1,44 @@
+version: '3.4'
+
+services:
+  haproxy:
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /mnt/data/haproxy/config/haproxy.local.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+      - /mnt/data/haproxy/config/routes.map:/usr/local/etc/haproxy/maps/routes.map:ro
+      - /mnt/data/haproxy/pem/savaproject.local.pem:/etc/haproxy/pem/savaproject.pem
+
+  registry-ui:
+    ports:
+      - 9006:80
+    environment:
+      - REGISTRY_URL=http://23.97.169.55:5000
+      - DELETE_IMAGES=true
+      
+  postgres:
+    ports:
+      - "9048:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+
+  geoserver:
+    ports:
+      - "9124:8080"
+      
+  gismap:
+    ports:
+      - "9228:3000"
+      - "9229:9229"
+    environment:
+    - NODE_ENV=local
+    stdin_open: true
+    tty: true
+
+  qgis:
+    ports:
+      - "9012:80"
+    volumes:
+      - /mnt/data/qgis/project/:/project
+  

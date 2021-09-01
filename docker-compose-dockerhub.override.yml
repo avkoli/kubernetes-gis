@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  geoserver:
+    ports:
+      - "9124:8080"
+
+  gismap:
+    ports:
+      - "9228:80"
+      - "9229:9229"
+    environment:
+    - NODE_ENV=production
+    stdin_open: true
+    tty: true

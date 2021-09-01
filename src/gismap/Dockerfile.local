@@ -1,0 +1,29 @@
+FROM ubuntu
+
+WORKDIR /usr/src/app
+
+ARG ACCEPT_EULA=Y
+ARG DEBIAN_FRONTEND=noninteractive
+ARG TZ=Asia/Kolkata
+
+RUN apt-get update \
+    && apt-get -y install curl gnupg wget software-properties-common apt-utils git-core libz3-dev \
+    && curl -sL https://deb.nodesource.com/setup_16.x  | bash - \
+    && apt-get -y install nodejs 
+
+RUN npm install -g yarn
+
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+ENV CHOKIDAR_USEPOLLING=true
+
+COPY ["./package.json", "./yarn.lock*", "./npm-shrinkwrap.json*", "./"]
+
+RUN yarn install 
+
+COPY . . 
+
+RUN cp ./config/.env.development.local ./.env
+
+EXPOSE 3000
+
+CMD /bin/sh -c "yarn start"

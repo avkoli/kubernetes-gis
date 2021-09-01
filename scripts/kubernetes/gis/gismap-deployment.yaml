@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: gismap
+  namespace: gis
+  labels:
+    app: gismap
+spec:
+  serviceName: gismap
+  replicas: 1
+  selector:
+    matchLabels:
+      service: gismap
+  template:
+    metadata:
+      labels:
+        app: gismap
+        service: gismap
+    spec:
+      containers:
+        - name: gismap
+          image:  abhijeetkoli/gismap:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          env:
+            - name: NODE_ENV
+              value: production
+          stdin: true
+          tty: true
+        

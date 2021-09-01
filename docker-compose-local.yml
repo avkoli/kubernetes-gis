@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  haproxy:
+    image: haproxy
+    container_name: haproxy
+    restart: always
+  
+  registry-ui:
+    image: joxit/docker-registry-ui:latest
+    container_name: registry-ui
+    restart: always
+  
+  postgres:
+    image: postgis/postgis
+    container_name: postgis
+    restart: always
+  
+  geoserver:
+    image: localhost:5000/geoserver:latest
+    container_name: geoserver
+    build:
+      context: ./scripts/docker/geoserver
+      dockerfile: Dockerfile
+    restart: always
+  
+  gismap:
+    image: localhost:5000/gismap:latest
+    container_name: gismap
+    build:
+      context: ./src/gismap
+      dockerfile: ./Dockerfile.local
+    restart: always
+  
+  qgis:
+    image: kartoza/qgis-server:LTR
+    container_name: qgis
+    restart: always

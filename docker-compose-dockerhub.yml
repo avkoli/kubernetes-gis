@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  geoserver:
+    image: abhijeetkoli/geoserver:latest
+    container_name: geoserver
+    build:
+      context: ./scripts/docker/gs
+      dockerfile: Dockerfile
+    restart: always
+  
+  gismap:
+    image: abhijeetkoli/gismap:latest
+    container_name: gismap
+    build:
+      context: ./src/gismap
+      dockerfile: ./Dockerfile.production
+    restart: always
